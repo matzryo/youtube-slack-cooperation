@@ -1,7 +1,6 @@
 # Sample Ruby code for user authorization
 
 require 'rubygems'
-gem 'google-api-client', '>0.7'
 require 'google/apis'
 require 'google/apis/youtube_v3'
 require 'googleauth'
