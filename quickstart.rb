@@ -10,7 +10,7 @@ require 'fileutils'
 require 'json'
 
 # REPLACE WITH VALID REDIRECT_URI FOR YOUR CLIENT
-REDIRECT_URI = 'http://localhost'
+REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
 APPLICATION_NAME = 'YouTube Data API Ruby Tests'
 
 # REPLACE WITH NAME/LOCATION OF YOUR client_secrets.json FILE
