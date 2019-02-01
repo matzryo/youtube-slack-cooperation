@@ -51,13 +51,11 @@ service.authorization = authorize
 
 # Sample ruby code for channels.list
 
-def channels_list_by_username(service, part, **params)
+def channels_list_by_id(service, part, **params)
   response = service.list_channels(part, params).to_json
   item = JSON.parse(response).fetch("items")[0]
 
-  puts ("This channel's ID is #{item.fetch("id")}. " +
-        "Its title is '#{item.fetch("snippet").fetch("title")}', and it has " +
-        "#{item.fetch("statistics").fetch("viewCount")} views.")
+  pp item.fetch("statistics")
 end
 
-channels_list_by_username(service, 'snippet,contentDetails,statistics', for_username: 'GoogleDevelopers')
+channels_list_by_id(service, 'statistics', id: 'UCOf_rlkZOLroqQugaWIKXFQ')
