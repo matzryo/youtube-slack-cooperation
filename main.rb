@@ -1,17 +1,11 @@
-require './quickstart'
-require 'net/http'
-require 'uri'
-require 'dotenv/load'
+require "dotenv/load"
+require "./youtube"
+require "./slack"
 
-uri = URI.parse(ENV['SLACK_WEBHOOK_URL'])
-http = Net::HTTP.new(uri.host, uri.port)
+youtube = YouTube.new(application_name: ENV["YOUTUBE_APPLICATION_NAME"])
+statistics = youtube.channels_list_by_id("statistics", id: "UCOf_rlkZOLroqQugaWIKXFQ")
 
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+content = "```#{JSON.pretty_generate(statistics)}```"
 
-req = Net::HTTP::Post.new(uri.path)
-req['Content-Type'] = 'application/json'
-req.body = { text: "```#{JSON.pretty_generate($statistics)}```" }.to_json
-pp req.body
-res = http.request(req)
-pp res
+slack = Slack.new(ENV["SLACK_WEBHOOK_URL"])
+slack.post(content)
