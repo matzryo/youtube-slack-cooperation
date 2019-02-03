@@ -54,8 +54,7 @@ service.authorization = authorize
 def channels_list_by_id(service, part, **params)
   response = service.list_channels(part, params).to_json
   item = JSON.parse(response).fetch("items")[0]
-
-  pp item.fetch("statistics")
+  item.fetch("statistics")
 end
 
-channels_list_by_id(service, 'statistics', id: 'UCOf_rlkZOLroqQugaWIKXFQ')
+$statistics = channels_list_by_id(service, 'statistics', id: 'UCOf_rlkZOLroqQugaWIKXFQ')
