@@ -1,3 +1,4 @@
 /client_secret.json
 /.bundle
 /vendor/bundle
+/.idea
