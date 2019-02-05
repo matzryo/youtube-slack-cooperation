@@ -3,3 +3,5 @@
 /vendor/bundle
 /.idea
 /.env
+/youtube-quickstart-ruby-credentials.yaml
+/function.zip
